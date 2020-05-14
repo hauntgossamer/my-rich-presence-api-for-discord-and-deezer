@@ -21,11 +21,12 @@ const sleep = (ms) => {
 
 //Gets user listening history and sets Rich Presence Variables based on the most recently played song.
 const getSong = () => {
+    child_process.spawn("echo hello >> test.txt", { shell: true })
     return axios
         .get(`http://api.deezer.com/user/me/history?access_token=${ access_token }&index=0&limit=1`)
         .then(async res => {
-            if(res.data.error && res.data.error.message == "invalid OAuth access token" || _isEmpty(unparsedToken)) {
-                child_process.exec("runner.bat", (error, stdout, stderr) => console.log(error, stdout, stderr));
+            if(res.data.error && res.data.error.message == "invalid OAuth access token" || _.isEmpty(unparsedToken)) {
+                child_process.spawn("runner.bat");
                 await sleep(5000);
                 access_token = unparsedToken["access_token"];
                 await sleep(5000);
@@ -67,7 +68,7 @@ const client = new RPC.Client({ transport: 'ipc' });
 const wait = async () => { 
     if (_.isEmpty(unparsedToken)){
         console.log("waiting for token");
-        child_process.exec("runner.bat", (error, stdout, stderr) => console.log(error, stdout, stderr));
+        child_process.spawn("runner.bat");
         await sleep(5000);
         access_token = unparsedToken["access_token"];
         await sleep(5000);
