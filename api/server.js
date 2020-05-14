@@ -25,7 +25,7 @@ const getSong = () => {
     return axios
         .get(`http://api.deezer.com/user/me/history?access_token=${ access_token }&index=0&limit=1`)
         .then(async res => {
-            if(res.data.error && res.data.error.message == "invalid OAuth access token" || _.isEmpty(unparsedToken)) {
+            if(res.data.error || _.isEmpty(unparsedToken)) {
                 child_process.spawn("runner.bat");
                 await sleep(5000);
                 access_token = unparsedToken["access_token"];
