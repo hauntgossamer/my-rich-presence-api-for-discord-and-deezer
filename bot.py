@@ -28,8 +28,9 @@ class TokenGetter():
             print("response from get token: {}".format(text))
             split = text.split("=")
             part1 = split[0]
-            part2 = split[1] + split[2]
-            data ={ str(part1): str(part2) }
+            part2 = split[1] 
+            part3 = split[2]
+            data ={ str(part1): str(part2 + "=" + part3) }
             with open("token.json", "w") as json_file:
                 json.dump(data, json_file)
             print("token sent to token.json")
