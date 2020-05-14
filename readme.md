@@ -65,5 +65,7 @@ Here is a step by step breakdown of what this api does:
 🎉 ***And that's it! Deezer is now interfaced with your Discord Status! Congratulations!*** 🎉 <br>
 <br>
 Brought you in part by Deezer API and Discord API
-![Deezer Logo](https://i.imgur.com/6M1Agln.png) <br>
-![Discord Logo](https://i.imgur.com/vslbSCW.png) 
+
+![Deezer Logo](https://i.imgur.com/6M1Agln.png "Deezer") <br>
+
+![logo](https://i.imgur.com/vslbSCW.png "Discord")
