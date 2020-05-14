@@ -2,3 +2,5 @@
 /node_modules
 package-lock.json
 secrets.py
+__pycache__
+debug.log

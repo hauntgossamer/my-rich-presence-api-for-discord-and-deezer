@@ -2,19 +2,35 @@ const express = require("express");
 const server = express();
 const RPC = require("discord-rpc");
 const axios = require("axios");
+const child_process = require("child_process");
+const _ = require("underscore");
+
+const unparsedToken = require("../token.json");
 
 //Initialze Rich Presence Variables
 let now = Date.now(),
-access_token,
+access_token = unparsedToken["access_token"],
 song_title,
 album_title,
 artist_name;
+
+// Creates a sleep function for pausing functions where async is not applicable
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 //Gets user listening history and sets Rich Presence Variables based on the most recently played song.
 const getSong = () => {
     return axios
         .get(`http://api.deezer.com/user/me/history?access_token=${ access_token }&index=0&limit=1`)
-        .then(res => {
+        .then(async res => {
+            if(typeof(res.data.error) !== "undefined" && res.data.error.message =="invalid OAuth access token") {
+                child_process.exec("runner.bat", (error, stdout, stderr) => console.log(error, stdout, stderr));
+                await sleep(5000);
+                access_token = unparsedToken["access_token"];
+                await sleep(5000);
+                getSong();
+            } else { 
             return axios
                 .get(`https://api.deezer.com/track/${ res.data.data[0].id }`)
                 .then(res => {
@@ -22,8 +38,9 @@ const getSong = () => {
                     album_title = res.data.album.title,
                     artist_name = res.data.artist.name;
                 });
+            }
         });
-}
+};
 
 // Functions which return the data used in rich presence update
 const details = () => `Recently listened to : ${ song_title }`
@@ -47,10 +64,13 @@ const setActivity = async () => {
 const client = new RPC.Client({ transport: 'ipc' });
 
 // Function that dicord-rpc runs in order to set rich presence for the user
-const wait = () => { 
-    if (typeof(access_token) === "undefined"){
+const wait = async () => { 
+    if (_.isEmpty(unparsedToken)){
         console.log("waiting for token");
-        setTimeout(wait, 5000);
+        child_process.exec("runner.bat", (error, stdout, stderr) => console.log(error, stdout, stderr));
+        await sleep(5000);
+        access_token = unparsedToken["access_token"];
+        await sleep(5000);
     } else {
         getSong()
             .then(() => {
@@ -79,13 +99,8 @@ server.get("/", (req, res) => {
     res.status(200).json({ message: "up" });
 })
 
-server.post("/token", (req, res) => {
-    access_token = req.body.token;
-    res.status(200).json({ message: "token recieved" });
-})
-
 // API endpoint for Auth redirect URI 
 server.get("/redirect", (req, res) => {
     res.status(200).sendFile(__dirname + "/index.html");
 })
-module.exports = server;
+module.exports = server
