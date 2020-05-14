@@ -9,10 +9,7 @@ Here is a step by step breakdown of what this api does:
 - My API refreshes the user's Discord status with the most recently played song, every 30 seconds.
 <br>
 
-### Warning: In order for you to be able to use my api, I have to whitelist your Discord account! Email me [Thomas J Shotts Jr](mailto:thomasjshottsjr@gmail.com) with your full Discord username and "Whitelist me, please" in the subject line. I'll whitelist you and reply as soon as I can :)
-<br>
-
-# After you're whitelisted, follow these easy steps to start using my API! (But only if you're on a *Windows* machine)
+# Follow these easy steps to start using my API! (But only if you're on a *Windows* machine)
 <br>
 
 ## If you don't have a Discord account, or the Desktop Discord Client:
