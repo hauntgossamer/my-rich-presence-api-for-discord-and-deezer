@@ -27,9 +27,9 @@ const getSong = () => {
         .then(async res => {
             if(res.data.error || _.isEmpty(unparsedToken)) {
                 child_process.spawn("runner.bat");
-                await sleep(5000);
+                await sleep(15000);
                 access_token = unparsedToken["access_token"];
-                await sleep(5000);
+                await sleep(15000);
                 getSong();
             } else { 
             return axios
@@ -69,9 +69,9 @@ const wait = async () => {
     if (_.isEmpty(unparsedToken)){
         console.log("waiting for token");
         child_process.spawn("runner.bat");
-        await sleep(5000);
+        await sleep(15000);
         access_token = unparsedToken["access_token"];
-        await sleep(5000);
+        await sleep(15000);
     } else {
         getSong()
             .then(() => {
