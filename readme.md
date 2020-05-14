@@ -41,10 +41,12 @@ Here is a step by step breakdown of what this api does:
         - ``cd Downloads/my-rich-presence-api-for-discord-and-deezer-master``
         - Press ``Enter``
     - Type the following command exactly as it is written, only substituting your Facebook email and password (*keep the quotes*):
+        ***My api will not save your information entered here.***
         - ``echo email="your Facebook login email" >> secrets.py``
         - Press ``Enter``
-        - ``echo password="your Facebook password" >> secrets.py`` <br>
-        ***My api will not save your information entered here.***
+        - ``echo password="your Facebook password" >> secrets.py``
+        - Press ``Enter``
+        - ``echo {} >> token.json``
         - Press ``Enter``
     - Type ``npm install`` and press ``Enter``
     - Wait for this process to complete (Two to three minutes, if your PC is midrange or higher)
