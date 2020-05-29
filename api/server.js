@@ -12,7 +12,6 @@ let access_token = unparsedToken["access_token"],
 song_title,
 album_title,
 artist_name,
-song_duration,
 now = Date.now();
 
 // Creates a sleep function for pausing functions where async is not applicable
@@ -22,7 +21,6 @@ const sleep = (ms) => {
 
 //Gets user listening history and sets Rich Presence Variables based on the most recently played song.
 const getSong = () => {
-    child_process.spawn("echo hello >> test.txt", { shell: true })
     return axios
         .get(`http://api.deezer.com/user/me/history?access_token=${ access_token }&index=0&limit=1`)
         .then(async res => {
