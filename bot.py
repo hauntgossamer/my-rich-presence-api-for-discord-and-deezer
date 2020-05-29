@@ -16,7 +16,7 @@ class TokenGetter():
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[1]/div/input").send_keys(email)
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[2]/div/input").send_keys(password)
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[4]/label[2]/input").click()
-        
+        browser.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/div[1]/a/div[2]").click()
         print("woke up, ready to show you the code")
         print("code: " + browser.current_url.split("=")[1])
         code = browser.current_url.split("=")[1]
@@ -30,7 +30,7 @@ class TokenGetter():
             part2 = split[1] 
             part3 = split[2]
             data ={ str(part1): str(part2 + "=" + part3) }
-            sleep(5)
+            sleep(15)
             with open("token.json", "w") as json_file:
                 json.dump(data, json_file)
             print("token sent to token.json")

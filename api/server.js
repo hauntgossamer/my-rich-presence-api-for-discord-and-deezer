@@ -8,11 +8,12 @@ const _ = require("underscore");
 const unparsedToken = require("../token.json");
 
 //Initialze Rich Presence Variables
-let now = Date.now(),
-access_token = unparsedToken["access_token"],
+let access_token = unparsedToken["access_token"],
 song_title,
 album_title,
-artist_name;
+artist_name,
+song_duration,
+now = Date.now();
 
 // Creates a sleep function for pausing functions where async is not applicable
 const sleep = (ms) => {
@@ -26,10 +27,11 @@ const getSong = () => {
         .get(`http://api.deezer.com/user/me/history?access_token=${ access_token }&index=0&limit=1`)
         .then(async res => {
             if(res.data.error || _.isEmpty(unparsedToken)) {
+                console.log(res.data.error)
                 child_process.spawn("runner.bat");
-                await sleep(15000);
+                await sleep(30000);
                 access_token = unparsedToken["access_token"];
-                await sleep(15000);
+                await sleep(30000);
                 getSong();
             } else { 
             return axios
@@ -37,7 +39,8 @@ const getSong = () => {
                 .then(res => {
                     song_title = res.data.title,
                     album_title = res.data.album.title,
-                    artist_name = res.data.artist.name;
+                    artist_name = res.data.artist.name,
+                    song_duration = res.data.duration * 86400;
                 });
             }
         });
