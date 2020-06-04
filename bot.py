@@ -30,7 +30,7 @@ class TokenGetter():
             part2 = split[1] 
             part3 = split[2]
             data ={ str(part1): str(part2 + "=" + part3) }
-            sleep(15)
+            sleep(10)
             with open("token.json", "w") as json_file:
                 json.dump(data, json_file)
             print("token sent to token.json")
