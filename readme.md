@@ -57,9 +57,10 @@ Here is a step by step breakdown of what this api does:
 4. Right-click ``Start-Deezer-Rich-Presence`` and click ``Properties``
 5. Check the box that says ``Unblock`` (This is so that Windows Defender won't block you from running the batch file. This is a simple protection used to prevent users from running files that could harm their PC)
 6. Click ``OK`` 
-7. Open your *Discord Desktop Client* and make sure you are logged in.
-8. Click [here](http://discordapp.com/api/oauth2/authorize?response_type=code&client_id=709635687820820520&scope=rpc%20&state=15773059ghq9183habn&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fredirect&prompt=consent) and log in to your Discord account. Click ``Authorize`` to authorize the api to set your Discord status for you. (Close the window, when you're redirected to the failing page. If you were to already be running the api, you would see a blank page with the Deezer logo, as Deezer requires all apps using their API to display their Logo at least once.)
-9. Double-click ``Start-Deezer-Rich-Presence.bat`` (If you have extensions hidden, it will just say ``Start-Deezer-Rich-Presence``) <br>
+7. Double-click ``install chromedriver``, allow the administrative privilages and then press ``Enter``. This will install a necessary component called ChromeDriver into you Chrome install directory. 
+8. Open your *Discord Desktop Client* and make sure you are logged in.
+9. Click [here](http://discordapp.com/api/oauth2/authorize?response_type=code&client_id=709635687820820520&scope=rpc%20&state=15773059ghq9183habn&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fredirect&prompt=consent) and log in to your Discord account. Click ``Authorize`` to authorize the api to set your Discord status for you. (Close the window, when you're redirected to the failing page. If you were to already be running the api, you would see a blank page with the Deezer logo, as Deezer requires all apps using their API to display their Logo at least once.)
+10. Double-click ``Start-Deezer-Rich-Presence.bat`` (If you have extensions hidden, it will just say ``Start-Deezer-Rich-Presence``) <br>
 <br>
 🎉 ***And that's it! Deezer is now interfaced with your Discord Status! Congratulations!*** 🎉 <br>
 <br>

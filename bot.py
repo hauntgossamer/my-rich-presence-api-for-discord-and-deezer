@@ -12,11 +12,11 @@ class TokenGetter():
     def getCode(self):
         browser.get("https://connect.deezer.com/oauth/auth.php?app_id=413642&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fredirect&perms=basic_access,email,listening_history")
         
-        browser.find_element_by_xpath("/html/body/div[1]/div/form/div[2]/div/div/div[2]/div/button[1]/span").click()
+        browser.find_element_by_xpath("/html/body/div[1]/div/form/div[2]/div/div/div[2]/div/button[2]/span").click()
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[1]/div/input").send_keys(email)
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[2]/div/input").send_keys(password)
         browser.find_element_by_xpath("/html/body/div/div[2]/div[1]/form/div/div[4]/label[2]/input").click()
-        browser.find_element_by_xpath("/html/body/div[1]/div/div[3]/div/div[1]/a/div[2]").click()
+        sleep(2)
         print("woke up, ready to show you the code")
         print("code: " + browser.current_url.split("=")[1])
         code = browser.current_url.split("=")[1]

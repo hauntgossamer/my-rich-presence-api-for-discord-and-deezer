@@ -28,7 +28,7 @@ const getSong = () => {
                 console.log("Attempted authorization with a bad token.");
                 console.log("Retrieving new token.");
                 child_process.spawn("runner.bat");
-                await sleep(60000)
+                await sleep(65000)
                     .then(() => access_token = unparsedToken["access_token"])
                     .then(() => console.log("token acquired"))
                     .finally(() => getSong());
